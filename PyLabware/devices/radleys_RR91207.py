@@ -39,39 +39,39 @@ class RadleysCarouselConnectCommands(LabDeviceCommands):
     # Add command dealing with device control/operation to this section.
 
     SET_TEMP = {"name": "OUT_SP_1", "type": int, "check": {"min": 20, "max": 300},
-                "reply": {"type": float, "parser": parser.slicer, "args": [9, -2]}}
+                "reply": {"type": float, "parser": parser.slicer, "args": [9, None]}}
     SET_SPEED = {"name": "OUT_SP_3", "type": float, "check": {"min": 100, "max": 1400},
-                 "reply": {"type": str, "parser": parser.slicer, "args": [9, -2]}}
+                 "reply": {"type": str, "parser": parser.slicer, "args": [9, None]}}
     SET_RESET_MODE = {"name": "OUT_MODE_2", "type": int, "check": {"min": 0, "max": 1},
-                      "reply": {"type": str, "parser": parser.slicer, "args": [0, -2]}}
+                      "reply": {"type": str, "parser": parser.slicer, "args": [0, None]}}
     SET_TEMP_MODE = {"name": "OUT_MODE_4", "type": int, "check": {"min": 0, "max": 1},
-                      "reply": {"type": str, "parser": parser.slicer, "args": [0, -2]}}
-    START_HEAT = {"name": "START_1"}
-    START_STIR = {"name": "START_2"}
-    STOP_HEAT = {"name": "STOP_1"}
-    STOP_STIR = {"name": "STOP_2"}
+                      "reply": {"type": str, "parser": parser.slicer, "args": [0, None]}}
+    START_HEAT = {"name": "START_1", "reply": {"type":str}}
+    START_STIR = {"name": "START_2", "reply": {"type":str}}
+    STOP_HEAT = {"name": "STOP_1", "reply": {"type":str}}
+    STOP_STIR = {"name": "STOP_2", "reply": {"type":str}}
     RESET = {"name": "RESET"}
-    GET_PROBE_TEMP = {"name": "IN_PV_1", "reply": {"type": float, "parser": parser.slicer, "args": [8, -2]}}
-    GET_PROBE_SAFETY_TEMP = {"name": "IN_PV_2", "reply": {"type": float, "parser": parser.slicer, "args": [8, -2]}}
-    GET_HOTPLATE_TEMP = {"name": "IN_PV_3", "reply": {"type": float, "parser": parser.slicer, "args": [8, -2]}}
-    GET_HOTPLATE_SAFETY_TEMP = {"name": "IN_PV_4", "reply": {"type": float, "parser": parser.slicer, "args": [8, -2]}}
-    GET_STIR_SPEED = {"name": "IN_PV_5", "reply": {"type": float, "parser": parser.slicer, "args": [8, -2]}}
-    GET_SET_TEMP = {"name": "IN_SP_1", "reply": {"type": float, "parser": parser.slicer, "args": [9, -2]}}
-    GET_SET_TEMP_SAFETY_DELTA = {"name": "IN_SP_2", "reply": {"type": float, "parser": parser.slicer, "args": [9, -2]}}
-    GET_SET_MOTOR_SPEED = {"name": "IN_SP_3", "reply": {"type": float, "parser": parser.slicer, "args": [9, -2]}}
-    QUERY_TEMP_SENSOR_TYPE = {"name": "IN_MODE_1", "type": int, "reply": {"type": int, "parser": parser.slicer, "args": [11, -2]}}
-    QUERY_RESET_MODE = {"name": "IN_MODE_2", "type": int, "reply": {"type": int, "parser": parser.slicer, "args": [11, -2]}}
-    QUERY_TEMP_MODE = {"name": "IN_MODE_4", "type": int, "reply": {"type": int, "parser": parser.slicer, "args": [11, -2]}}
-    QUERY_STATUS = {"name": "STATUS", "type": int, "reply": {"type": int, "parser": parser.slicer, "args": [7, -2]}}
+    GET_PROBE_TEMP = {"name": "IN_PV_1", "reply": {"type": float, "parser": parser.slicer, "args": [8, None]}}
+    GET_PROBE_SAFETY_TEMP = {"name": "IN_PV_2", "reply": {"type": float, "parser": parser.slicer, "args": [8, None]}}
+    GET_HOTPLATE_TEMP = {"name": "IN_PV_3", "reply": {"type": float, "parser": parser.slicer, "args": [8, None]}}
+    GET_HOTPLATE_SAFETY_TEMP = {"name": "IN_PV_4", "reply": {"type": float, "parser": parser.slicer, "args": [8, None]}}
+    GET_STIR_SPEED = {"name": "IN_PV_5", "reply": {"type": float, "parser": parser.slicer, "args": [8, None]}}
+    GET_SET_TEMP = {"name": "IN_SP_1", "reply": {"type": float, "parser": parser.slicer, "args": [8, None]}}
+    GET_SET_TEMP_SAFETY_DELTA = {"name": "IN_SP_2", "reply": {"type": float, "parser": parser.slicer, "args": [8, None]}}
+    GET_SET_MOTOR_SPEED = {"name": "IN_SP_3", "reply": {"type": float, "parser": parser.slicer, "args": [8, None]}}
+    QUERY_TEMP_SENSOR_TYPE = {"name": "IN_MODE_1", "type": int, "reply": {"type": int, "parser": parser.slicer, "args": [10, None]}}
+    QUERY_RESET_MODE = {"name": "IN_MODE_2", "type": int, "reply": {"type": int, "parser": parser.slicer, "args": [10, None]}}
+    QUERY_TEMP_MODE = {"name": "IN_MODE_4", "type": int, "reply": {"type": int, "parser": parser.slicer, "args": [10, None]}}
+    QUERY_STATUS = {"name": "STATUS", "type": int, "reply": {"type": int, "parser": parser.slicer, "args": [7, None]}}
 
 
     # ################### Configuration commands #############################
     # Add commands altering device configuration/settings to this section.
-    PROTOCOL_NEW = {"name": "PA_NEW", "reply": {"type": str, "parser": parser.slicer, "args": [0, 6]}}
-    PROTOCOL_OLD = {"name": "PA_OLD", "reply": {"type": str, "parser": parser.slicer, "args": [0, 6]}}
-    SOFTWARE_VERSION = {"name": "SW_VERS"}
-    CHECK_CONNECTION_ON = {"name": "CC_ON"}
-    CHECK_CONNECTION_OFF = {"name": "CC_OFF"}
+    PROTOCOL_NEW = {"name": "PA_NEW", "reply": {"type": str}}
+    PROTOCOL_OLD = {"name": "PA_OLD", "reply": {"type": str}}
+    SOFTWARE_VERSION = {"name": "SW_VERS", "reply": {"type": str}}
+    CHECK_CONNECTION_ON = {"name": "CC_ON", "reply": {"type": str}}
+    CHECK_CONNECTION_OFF = {"name": "CC_OFF", "reply": {"type": str}}
 
 
 class RadleysCarouselConnect(AbstractHotplate):
@@ -81,7 +81,7 @@ class RadleysCarouselConnect(AbstractHotplate):
     operation manual 201811_IKAPlate-Lab_A1_25002139a.
     """
 
-    def __init__(self, device_name: str, connection_mode: str, address: Optional[str], port: Union[str, int], auto_connect: bool):
+    def __init__(self, device_name: str, connection_mode: str, address: Optional[str], port: Union[str, int]):
         """Default constructor
         """
 
@@ -91,13 +91,15 @@ class RadleysCarouselConnect(AbstractHotplate):
         # Connection settings
         connection_parameters: ConnectionParameters = {}
         # Change any connection settings to device specific ones, if needed
-        # connection_parameters["port"] = port
-        # connection_parameters["address"] = address
+        connection_parameters["port"] = port
+        connection_parameters["address"] = address
         connection_parameters["baudrate"] = 9600
         connection_parameters["bytesize"] = serial.EIGHTBITS
         connection_parameters["parity"] = serial.PARITY_NONE
+        connection_parameters["encoding"] = "utf_8"
+        connection_parameters["force_7bit"] = True
 
-        super().__init__(device_name, connection_mode, connection_parameters, auto_connect)
+        super().__init__(device_name, connection_mode, connection_parameters)
 
         # Protocol settings
         # Terminator for the command string (from host to device)
@@ -107,9 +109,10 @@ class RadleysCarouselConnect(AbstractHotplate):
         # Separator between command and command arguments, if any
         self.args_delimiter = " "
 
-    def initialise_device(self):
+    def initialize_device(self):
         """Set default operation mode & reset.
         """
+        self.connection.open_connection()
         self.send(self.cmd.PROTOCOL_NEW)
         self.logger.info("Device initialised")
 
@@ -172,6 +175,15 @@ class RadleysCarouselConnect(AbstractHotplate):
         self.send(self.cmd.STOP_STIR)
         self.logger.info("Stopped stirring")
 
+    def set_speed(self, speed: int):
+        self.send(self.cmd.SET_SPEED, speed)
+
+    def get_speed(self):
+        return self.send(self.cmd.GET_STIR_SPEED)
+
+    def get_speed_setpoint(self):
+        return self.send(self.cmd.GET_SET_MOTOR_SPEED)
+
     def set_temperature(self, temperature: float, sensor: int = 0):
         self.send(self.cmd.SET_TEMP, temperature)
 
@@ -185,15 +197,6 @@ class RadleysCarouselConnect(AbstractHotplate):
             return self.send(self.cmd.GET_PROBE_TEMP)
         else:
             raise PLDeviceCommandError(f"Invalid sensor provided. Use 0 for hotplate or 1 for external probe")
-
-    def set_speed(self, speed: int):
-        self.send(self.cmd.SET_SPEED, speed)
-
-    def get_speed(self):
-        return self.send(self.cmd.GET_STIR_SPEED)
-
-    def get_speed_setpoint(self):
-        return self.send(self.cmd.GET_SET_MOTOR_SPEED)
 
     def get_temperature_safety_delta(self):
         self.send(self.cmd.GET_SET_TEMP_SAFETY_DELTA)
@@ -225,11 +228,4 @@ class RadleysCarouselConnect(AbstractHotplate):
 
     def set_connection_check_off(self):
         self.send(self.cmd.CHECK_CONNECTION_OFF)
-
-
-
-
-
-
-
 

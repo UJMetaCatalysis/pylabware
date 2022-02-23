@@ -21,6 +21,8 @@ from .devices.ika_rv10 import RV10Rotovap
 # JULABO
 from .devices.julabo_cf41 import CF41Chiller
 
+from .devices.radleys_RR91207 import RadleysCarouselConnect
+
 # Tricontinent
 from .devices.tricontinent_c3000 import C3000SyringePump
 

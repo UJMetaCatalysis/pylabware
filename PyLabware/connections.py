@@ -204,6 +204,7 @@ class SerialConnection(AbstractConnection):
         self._connection.dsrdtr = self.connection_parameters.get("dsrdtr")
         self._connection.write_timeout = self.transmit_timeout
         self._connection.inter_byte_timeout = self.connection_parameters.get("inter_byte_timeout")
+        self.force_7bit = self.connection_parameters.get("force_7bit")
         # Open connection
         try:
             self._connection.open()
@@ -239,6 +240,8 @@ class SerialConnection(AbstractConnection):
                         reply_bytes = self._connection.read(size=self.receive_buffer_size)
                         self.logger.debug("connection_listener()::got reply <%s>", reply_bytes)
                     try:
+                        if self.force_7bit:
+                            reply_bytes = self.truncate_8bit(reply_bytes)
                         self._last_reply += reply_bytes.decode(self.encoding)
                     except UnicodeDecodeError:
                         self.logger.exception("Can't decode device reply!", exc_info=True)
@@ -329,6 +332,13 @@ class SerialConnection(AbstractConnection):
         # Unset ready flag
         self._data_ready.clear()
         return LabDeviceReply(body=self._last_reply, content_type="chunked")
+
+    @staticmethod
+    def truncate_8bit(raw_bytes):
+        fix_bytes = ""
+        for byte in raw_bytes:
+            fix_bytes += chr(byte & 0x7f)
+        return bytes(fix_bytes, encoding="utf_8")
 
 
 class TCPIPConnection(AbstractConnection):
